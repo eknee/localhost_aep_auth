@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "88d85219-3826-4a7e-bbb7-4fde7950f73c",
+		"name": "Adobe IO Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local JWT Creation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9670a2e2-1700-4d85-b88b-4014cd07fc38",
+						"exec": [
+							"var json = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"access_token\", json.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cache-Control",
+						"value": "no-cache"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "{{API_KEY}}",
+							"type": "text"
+						},
+						{
+							"key": "technical_account_id",
+							"value": "{{TECHNICAL_ACCOUNT_ID}}",
+							"type": "text"
+						},
+						{
+							"key": "org_id",
+							"value": "{{IMS_ORG}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{CLIENT_SECRET}}",
+							"type": "text"
+						},
+						{
+							"key": "private_key",
+							"value": "{{PRIVATE_KEY}}",
+							"type": "text"
+						},
+						{
+							"key": "meta_scopes",
+							"value": "{{META_SCOPE}}",
+							"type": "text"
+						},
+						{
+							"key": "host_name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "sandbox_name",
+							"value": "",
+							"type": "text"
+						}
+					],
+					"options": {
+						"urlencoded": {}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000"
+				},
+				"description": "Generated from a curl request: \ncurl -X POST \\\n  https://adobeioruntime.net/api/v1/web/io-solutions/default/jwt \\\n  -H 'Cache-Control: no-cache' \\\n  -H 'Content-Type: application/x-www-form-urlencoded' \\\n  -d 'client_id=<YOUR_CLIENT_ID>&technical_account_id=<TECHNICAL_ACCOUNT_ID>&org_id=<ORG_ID>&client_secret=<CLIENT_SECRET>&private_key=<CONTENT_OF_PRIVATE_KEY_FILE>&meta_scopes=<COMMA_SEPARATED_META_SCOPES>'"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
