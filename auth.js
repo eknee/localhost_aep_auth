@@ -1,4 +1,4 @@
-// auth.js
+// jwt.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const auth = require('@adobe/jwt-auth');
@@ -26,8 +26,8 @@ app.post('/', async (req, res) => {
 		let tokenResponse = await auth(config);	//jwt-auth response
 		console.log(tokenResponse);
 
-		if(req.body.host_name && req.body.sandbox_name) {
-			var psql = "psql 'sslmode=require host=" + req.body.host_name + ".platform-query.adobe.io port=80 dbname=" + req.body.sandbox_name + ":all user=" + req.body.org_id + " password=" + tokenResponse.access_token + "'"
+		if(req.body.tenant_name && req.body.sandbox_name) {
+			var psql = "psql 'sslmode=require host=" + req.body.tenant_name + ".platform-query.adobe.io port=80 dbname=" + req.body.sandbox_name + ":all user=" + req.body.org_id + " password=" + tokenResponse.access_token + "'"
 			tokenResponse['psql'] = psql;
 			console.log(tokenResponse)
 		}

@@ -62,7 +62,7 @@
 							"type": "text"
 						},
 						{
-							"key": "host_name",
+							"key": "tenant_name",
 							"value": "",
 							"type": "text"
 						},
